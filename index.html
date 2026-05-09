@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los juegos del Ovejo negro 🐑🎮</title>
+    <style>
+        :root {
+            --bg: #0b0b12;
+            --card-bg: rgba(255, 255, 255, 0.06);
+            --text: #ffffff;
+            --text-muted: #8a8a9a;
+            --accent: #8b5cf6;
+            --accent-hover: #a78bfa;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --border: rgba(255, 255, 255, 0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2.5rem 1rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(139, 92, 246, 0.18), transparent 40%),
+                        radial-gradient(circle at 70% 60%, rgba(236, 72, 153, 0.12), transparent 40%);
+            animation: bgMove 15s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes bgMove {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(5%, -5%) scale(1.1); }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            animation: fadeIn 0.8s ease-out;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #8b5cf6, #ec4899, #f59e0b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        header p { color: var(--text-muted); font-size: 1rem; }
+
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            width: 100%;
+            max-width: 900px;
+            animation: slideUp 0.6s ease-out 0.2s both;
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            padding: 1.2rem 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .link-card::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.05));
+            opacity: 0; transition: opacity 0.25s;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px) scale(1.015);
+            border-color: var(--accent);
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.35);
+        }
+
+        .link-card:hover::after { opacity: 1; }
+        .link-card:active { transform: translateY(-2px) scale(0.99); }
+        .link-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+        .emoji { font-size: 1.3rem; flex-shrink: 0; }
+
+        /* Bingo special: two links in one card */
+        .bingo-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 100%;
+        }
+        .bingo-container .link-card {
+            padding: 0.9rem;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 480px) {
+            .link-grid { grid-template-columns: 1fr; }
+            header { margin-bottom: 2rem; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Los juegos del Ovejo negro 🐑🎮</h1>
+        <p>Tu colección personal de minijuegos. ¡Haz clic y juega!</p>
+    </header>
+
+    <main class="link-grid">
+        <a href="https://perickko-source.github.io/mi-juego-telegram/" target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="emoji">🎲</span> Cliker aleatorio
+        </a>
+        <a href="https://perickko-source.github.io/perickko-snake/" target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="emoji">🐍</span> Snake
+        </a>
+        <a href="https://perickko-source.github.io/valefor-bird/" target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="emoji">🦅</span> Valefor Bird
+        </a>
+        <a href="https://perickko-source.github.io/perickko-caballo/" target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="emoji">♞</span> Recorrido del Caballo
+        </a>
+        <a href="https://perickko-source.github.io/perickko-matamarcianos/" target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="emoji">👾</span> Matamarcianos
+        </a>
+        <a href="https://perickko-source.github.io/perickko-marcianos-invaders/" target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="emoji">🛸</span> Marcianos Invaders
+        </a>
+        <a href="https://perickko-source.github.io/perickko-puzzles/" target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="emoji">🧩</span> Puzzles
+        </a>
+        <a href="https://perickko-source.github.io/perickko-naia/" target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="emoji">✨</span> Atrapa Emojis con Naia
+        </a>
+        <a href="https://perickko-source.github.io/perickko-topos/" target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="emoji">🔨</span> Whack-a-mole
+        </a>
+        
+        <!-- Bingo con dos enlaces -->
+        <div class="bingo-container">
+            <a href="https://perickko-source.github.io/perickko-topos/" target="_blank" rel="noopener noreferrer" class="link-card">
+                <span class="emoji">🎱</span> Bingo
+            </a>
+            <a href="https://perickko-source.github.io/perickko-bingo/cartones.html" target="_blank" rel="noopener noreferrer" class="link-card">
+                <span class="emoji">🎫</span> Cartones Bingo
+            </a>
+        </div>
+
+        <a href="https://perickko-source.github.io/perickko-Highway-runner/" target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="emoji">🏎️</span> Highway Runner
+        </a>
+        <a href="https://perickko-source.github.io/perickko-dados/" target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="emoji">🎲⏳</span> Dados y Reloj de arena
+        </a>
+        <a href="https://perickko-source.github.io/perickko-sorteos/" target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="emoji">🎁</span> Sorteos
+        </a>
+        <a href="https://perickko-source.github.io/perickko-kiriki/" target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="emoji">🎲</span> Kiriki
+        </a>
+        <a href="https://perickko-source.github.io/perickko-5000/" target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="emoji">🔟</span> 5000
+        </a>
+        <a href="https://perickko-source.github.io/perickko-almacen/" target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="emoji">📦</span> Almacén Runner
+        </a>
+    </main>
+
+    <script>
+        // Efecto sutil de partículas flotantes (opcional, ligero)
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+                const cards = document.querySelectorAll('.link-card');
+                cards.forEach((card, i) => {
+                    card.style.animationDelay = `${i * 0.05}s`;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
