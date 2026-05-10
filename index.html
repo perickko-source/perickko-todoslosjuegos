@@ -117,7 +117,6 @@
 
         .emoji { font-size: 1.3rem; flex-shrink: 0; }
 
-        /* Bingo special: two links in one card */
         .bingo-container {
             display: flex;
             flex-direction: column;
@@ -209,10 +208,14 @@
         <a href="https://perickko-source.github.io/perickko-almacen/" target="_blank" rel="noopener noreferrer" class="link-card">
             <span class="emoji">📦</span> Almacén Runner
         </a>
+        
+        <!-- ✨ El molino ✨ -->
+        <a href="https://perickko-source.github.io/perickko-el-molino/" target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="emoji">🌾</span> El molino
+        </a>
     </main>
 
     <script>
-        // Efecto sutil de partículas flotantes (opcional, ligero)
         document.addEventListener('DOMContentLoaded', () => {
             if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
                 const cards = document.querySelectorAll('.link-card');
